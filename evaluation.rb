@@ -5,7 +5,9 @@ require "css_parser"
 
 github_username = "ana-kos"
 # url = "https://#{github_username}.github.io/my-first-web-page.github.io/"
-url = "file:///Users/jonathan/Downloads/my-first-web-page.github.io-master/Code/index.html"
+# url = "file:///Users/jonathan/Downloads/my-first-web-page.github.io-master/Code/index.html"
+
+url = "https://nahiauhart.github.io/"
 
 page = Nokogiri::HTML(URI.open(url))
 
@@ -48,6 +50,11 @@ fa_icon = page.css('i').find do |icon|
   icon&.attributes["class"]&.value&.match(/fa/)
 end
 
+###################################################
+##### Début du remplissage du tableau points ######
+###################################################
+
+
 # Un titre, un sous titre et un paragraphe
 if page.css('h1', 'h2', 'p').size > 0
   points << 1
@@ -76,12 +83,12 @@ else
   p "#Une division avec le bord du cadre de couleur et arrondi et avec une ombre"
 end
 
-# Un bouton fait par vous identifié par la classe .my-btn
-if page.css('a.my-btn').size > 0
-  points << 1
-else
-  p "Un bouton fait par vous identifié par la classe .my-btn"
-end
+# # Un bouton fait par vous identifié par la classe .my-btn
+# if page.css('a.my-btn').size > 0
+#   points << 1
+# else
+#   p "Un bouton fait par vous identifié par la classe .my-btn"
+# end
 
 # Une modale issue de Bootstrap
 if page.css('.modal').size > 0
@@ -132,21 +139,21 @@ else
   p "Une carte issue de Google maps"
 end
 
-# Un icon issu de Font awesome
-if fa_icon
-  points << 1
-else
-  p "Un icon issu de Font awesome"
-end
+# # Un icon issu de Font awesome
+# if fa_icon
+#   points << 1
+# else
+#   p "Un icon issu de Font awesome"
+# end
 
-# Un footer issu de Le wagon Ui composants
-if page.css('.footer').size > 0
-  points << 1
-else
-  p "Un footer issu de Le wagon Ui composants"
-end
+# # Un footer issu de Le wagon Ui composants
+# if page.css('.footer').size > 0
+#   points << 1
+# else
+#   p "Un footer issu de Le wagon Ui composants"
+# end
 
-# Un formulaire issue de Type form
+# Un formulaire issue de Type form ou de mailchimp
 
 p "Note de #{github_username} : #{points.sum}/ 14 "
 
